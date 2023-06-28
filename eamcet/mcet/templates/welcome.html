@@ -1,0 +1,127 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educounselor</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f6f6f6;
+        }
+
+        .navbar {
+            background-color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .navbar-logo img {
+            width: 200px;
+            height: auto;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background: linear-gradient(to right, #4b6cb7, #182848);
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            color: #fff;
+        }
+
+        .content {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .image {
+            width: 100%;
+            height: auto;
+            margin: 20px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+                margin-bottom: 15px;
+            }
+
+            h2 {
+                font-size: 22px;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-size: 14px;
+                margin-bottom: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="navbar-logo">
+        <img src="{% static 'img\logo-no-background.png' %}" alt="Logo">
+    </div>
+</nav>
+<div class="container">
+    <div class="content">
+        <h1>Welcome to Our College List Generator</h1>
+        <p>Discover the Perfect Colleges for Your Future!</p>
+
+        <h2>About Us</h2>
+        <p>We are a dedicated team of professionals passionate about helping students find the best colleges for their academic journey. Our goal is to provide you with accurate and comprehensive information to make informed decisions about your college choices.</p>
+
+        <h2>How It Works</h2>
+        <p>Our college list generator simplifies the college selection process. Just fill out our preference form with your desired criteria, such as location, program,eamcet rank,and more. Based on your preferences, we will generate a personalized list of colleges that match your requirements.</p>
+        <h2>Get Started</h2>
+        <p>Ready to find your dream college? Start by filling out our preference form and let us help you discover the perfect options for your higher education.</p>
+        <a href="{% url 'home' %}" class="btn">Fill out Preference Form</a>
+    </div>
+    <img src="{% static 'img\footer_img.jpg' %}" alt="Vector Image" class="image">
+</div>
+</body>
+</html>

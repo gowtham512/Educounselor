@@ -1,0 +1,272 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EAMCET Form</title>
+    <style>
+      /* CSS styling for the form */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        background-image: url("{% static 'img\form_background.png' %}");
+        backdrop-filter: blur 20px ;
+      }
+
+      .container {
+        max-width: 500px;
+        margin: 30px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .form-group select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      .submit-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .submit-btn:hover {
+        background-color: #45a049;
+      }
+
+      .req
+      {
+        color: red;
+      }
+
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h2>EAMCET Preference Form</h2>
+      <form method="POST" action="{% url 'form_submission' %}">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="rank">Rank<span class="req">*</span>:</label>
+          <input type="number" id="rank" name="rank" required min=1/>
+        </div>
+
+        <div class="form-group">
+          <label for="gender">Gender<span class="req">*</span>:</label>
+          <select id="gender" name="gender" required>
+            <option value="" disabled selected>Select Gender</option>
+            <option value="BOYS">Male</option>
+            <option value="GIRLS">Female</option>
+          </select>
+        </div>
+        <div class="form-group">
+            <label for="category">Category<span class="req">*</span>:</label>
+            <select id="category" name="category" required>
+              <option value="" disabled selected>Select Caste</option>
+              <option value="OC">OC</option>
+              <option value="BC_A">BC-A</option>
+              <option value="BC_B">BC-B</option>
+              <option value="BC_C">BC-C</option>
+              <option value="BC_D">BC-D</option>
+              <option value="BC_E">BC-E</option>
+              <option value="SC">SC</option>
+              <option value="ST">ST</option>
+              <option value="EWS">EWS</option>
+            </select>
+        </div>
+        <div class="form-group">
+          <label for="phase">Counselling Phase<span class="req">*</span>:</label>
+          <select id="phase" name="phase" required>
+            <option value="" disabled selected>Select Phase</option>
+            <option value="first">First</option>
+            <option value="final">Final</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="district">District:</label>
+          <select id="district" name="district" multiple>
+            <option value="HYD">Hyderabad</option>
+            <option value="MDL">Medchal-Malkajgiri</option>
+            <option value="RR">Ranga Reddy</option>
+            <option value="KGM">Khammam</option>
+            <option value="SRP">Siddipet</option>
+            <option value="WGL">Warangal</option>
+            <option value="KHM">Karimnagar</option>
+            <option value="MED">Medak</option>
+            <option value="SRD">Sangareddy</option>
+            <option value="KMR">Kamareddy</option>
+            <option value="NZB">Nizamabad</option>
+            <option value="KRM">Kurnool</option>
+            <option value="SDP">Suryapet</option>
+            <option value="JTL">Jagtial</option>
+            <option value="PDL">Peddapalli</option>
+            <option value="SRC">Sircilla</option>
+            <option value="WNP">Wanaparthy</option>
+            <option value="MBN">Mahbubnagar</option>
+            <option value="HNK">Hanamkonda</option>
+            <option value="NLG">Nalgonda</option>
+            <option value="YBG">Yadadri Bhuvanagiri</option>
+          </select>
+          <div id="selectedDistricts"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="branch">Branch:</label>
+          <select id="branch" name="branch" multiple>
+            <option value="AGR">Agricultural Engineering</option>
+            <option value="AI">Artificial Intelligence</option>
+            <option value="AID">
+              Artificial Intelligence and Data Science
+            </option>
+            <option value="AIM">
+              Artificial Intelligence and Machine Learning
+            </option>
+            <option value="ANE">Aeronautical Engineering</option>
+            <option value="AUT">Automobile Engineering</option>
+            <option value="BIO">Bio-Technology</option>
+            <option value="BME">Bio-Medical Engineering</option>
+            <option value="CHE">Chemical Engineering</option>
+            <option value="CIC">
+              CSE (IoT and Cyber Security including Block Chain Technology)
+            </option>
+            <option value="CIV">Civil Engineering</option>
+            <option value="CME">Computer Engineering</option>
+            <option value="CSC">
+              Computer Science and Engineering (Cyber Security)
+            </option>
+            <option value="CSD">
+              Computer Science and Engineering (Data Science)
+            </option>
+            <option value="CSG">Computer Science & Design</option>
+            <option value="CSM">
+              Computer Science and Engineering (Artificial Intelligence and
+              Machine Learning)
+            </option>
+            <option value="CSN">
+              Computer Science & Engineering (Networks)
+            </option>
+            <option value="CSO">Computer Science and Engineering (IoT)</option>
+            <option value="CSW">
+              Computer Engineering (Software Engineering)
+            </option>
+            <option value="CSI">
+              Computer Science and Information Technology
+            </option>
+            <option value="CSB">Computer Science and Business System</option>
+            <option value="CSE">Computer Science and Engineering</option>
+            <option value="CST">Computer Science and Technology</option>
+            <option value="DTD">
+              Digital Techniques for Design and Planning
+            </option>
+            <option value="DRG">Dairying</option>
+            <option value="ECE">
+              Electronics and Communication Engineering
+            </option>
+            <option value="ECI">
+              Electronics Communication and Instrumentation Engineering
+            </option>
+            <option value="ECM">Electronics and Computer Engineering</option>
+            <option value="EIE">
+              Electronics and Instrumentation Engineering
+            </option>
+            <option value="ETM">Electronics and Telematics</option>
+            <option value="EEE">Electrical and Electronics Engineering</option>
+            <option value="FDT">Food Technology</option>
+            <option value="FSP">Facilities and Services Planning</option>
+            <option value="INF">Information Technology</option>
+            <option value="MEC">Mechanical Engineering</option>
+            <option value="MET">Metallurgical Engineering</option>
+            <option value="MMT">Metallurgy and Material Engineering</option>
+            <option value="MTE">
+              B.Tech Mechanical with M.Tech Thermal Engineering
+            </option>
+            <option value="MCT">Mechanical (Mechatronics) Engineering</option>
+            <option value="MIN">Mining Engineering</option>
+            <option value="PHE">Pharmaceutical Engineering</option>
+            <option value="PLG">Planning</option>
+            <option value="TEX">Textile Technology</option>
+          </select>
+          <div id="selectedBranches"></div>
+        </div>
+        <div class="form-group">
+          <label for="coed">Coed(or)Girls:</label>
+          <select id="gender" name="coed">
+            <option value="" disabled selected>Select option</option>
+            <option value="COED">Coed</option>
+            <option value="GIRLS">Girls</option>
+          </select>
+        </div>
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Initialize Select2 for district and branch selection
+        $("#district").select2({
+          placeholder: "Select Districts",
+          allowClear: true,
+        });
+
+        $("#branch").select2({
+          placeholder: "Select Branches",
+          allowClear: true,
+        });
+
+        // Update selected districts
+        $("#district").on("change", function () {
+          var selectedDistricts = $(this).val();
+          var selectedDistrictsText = "";
+
+          if (selectedDistricts && selectedDistricts.length > 0) {
+            selectedDistrictsText = selectedDistricts.join(", ");
+          }
+
+          $("#selectedDistricts").text(
+            "Selected Districts: " + selectedDistrictsText
+          );
+        });
+
+        // Update selected branches
+        $("#branch").on("change", function () {
+          var selectedBranches = $(this).val();
+          var selectedBranchesText = "";
+
+          if (selectedBranches && selectedBranches.length > 0) {
+            selectedBranchesText = selectedBranches.join(", ");
+          }
+
+          $("#selectedBranches").text(
+            "Selected Branches: " + selectedBranchesText
+          );
+        });
+      });
+    </script>
+  </body>
+</html>
